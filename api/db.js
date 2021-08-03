@@ -29,17 +29,18 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Bundle,Category,Image,Office,Order,Product,Review,Schedule,Stock,User,Wishlist,BuyHistory } = sequelize.models;
+const { Bundle,Category,Office,Order,Product,Review,Schedule,Stock,User,Wishlist,BuyHistory,Productfeature,Productimage } = sequelize.models;
 
-BuyHistory.belongsToMany(User,{through:"buyhistory_user"});
-User.belongsTo(BuyHistory,{foreignKey:"user_id"});
+/*Product.belongsToMany(Productfeature,{through:"product_feature"});
+Productfeature.belongsTo(Product,{foreignKey:"product_id"});*/
+
+
 
 BuyHistory.belongsToMany(Order,{through:"buyhistory_order"});
 Order.belongsToMany(BuyHistory,{through:"buyhistory_order"});
 
 const Bundle_Product = sequelize.define('Bundle_Product', {
   id: {type: DataTypes.UUID,
-  defaultValue: DataTypes.UUIDV4,
   allowNull: false,
   primaryKey: true},
   quantity: DataTypes.INTEGER
@@ -52,7 +53,6 @@ Product.belongsToMany(Bundle,{ through: Bundle_Product });
 
 const Category_Product = sequelize.define('Category_Product', {
   id: {type: DataTypes.UUID,
-  defaultValue: DataTypes.UUIDV4,
   allowNull: false,
   primaryKey: true}
 });
@@ -61,13 +61,10 @@ const Category_Product = sequelize.define('Category_Product', {
 Category.belongsToMany(Product,{ through: Category_Product});
 Product.belongsToMany(Category,{ through: Category_Product});
 
-Product.hasMany(Image);
-Image.belongsTo(Product);
 
 
 const Order_Product = sequelize.define('Order_Product', {
   id: {type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
     allowNull: false,
     primaryKey: true},
     quantity: DataTypes.INTEGER,
@@ -79,7 +76,6 @@ Order.belongsToMany(Product,{through: Order_Product});
 
 const Order_Schedule = sequelize.define('Order_Schedule', {
   id: {type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
     allowNull: false,
     primaryKey: true},
 });
@@ -88,35 +84,45 @@ const Order_Schedule = sequelize.define('Order_Schedule', {
 Order.belongsToMany(Schedule, {through: Order_Schedule});
 Schedule.belongsToMany(Order, {through: Order_Schedule});
 
-Product.belongsToMany(Stock,{through:"product_stock"});
-Stock.belongsTo(Product,{foreignKey:"product_id"})
+Wishlist.belongsToMany(Stock,{through:"wishlist_stock"});
+Stock.belongsToMany(Wishlist,{through:"wishlist_stock"});
 
-Product.belongsToMany(Wishlist, {through:"product_wishlist"});
-Wishlist.belongsTo(Product,{foreignKey:"product_id"})
+Product.hasMany(Productfeature);
+Productfeature.belongsTo(Product);
+
+
+Product.hasMany(Productimage);
+Productimage.belongsTo(Product);
+
+BuyHistory.hasMany(User);
+User.belongsTo(BuyHistory);
+
+Product.hasMany(Stock);
+Stock.belongsTo(Product);
+
+Product.hasMany(Wishlist);
+Wishlist.belongsTo(Product);
 
 User.hasOne(Wishlist);
 Wishlist.belongsTo(User);
 
-Wishlist.belongsToMany(Stock,{through:"wishlist_stock"});
-Stock.belongsToMany(Wishlist,{through:"wishlist_stock"});
+Office.hasMany(Stock);
+Stock.belongsTo(Office)
 
-Office.belongsToMany(Stock,{through:"office_stock"});
-Stock.belongsTo(Office,{foreignKey:"office_id"})
+Office.hasMany(Schedule);
+Schedule.belongsTo(Office)
 
-Office.belongsToMany(Schedule,{through:"office_schedule"});
-Schedule.belongsTo(Office,{foreignKey:"office_id"})
+User.hasMany(Order);
+Order.belongsTo(User);
 
-User.belongsToMany(Order,{through:"user_order"});
-Order.belongsTo(User,{foreignKey:"user_id"});
+User.hasMany(Review);
+Review.belongsTo(User);
 
-User.belongsToMany(Review,{through:"user_review"});
-Review.belongsTo(User,{foreignKey:"reviewer_id"});
+Order.hasMany(Review);
+Review.belongsTo(Order);
 
-Order.belongsToMany(Review,{through:"order_review"});
-Review.belongsTo(Order,{foreignKey:"order_id"})
-
-User.belongsToMany(Schedule,{through:"user_schedule"});
-Schedule.belongsTo(User,{foreignKey:"admin_id"})
+User.hasMany(Schedule);
+Schedule.belongsTo(User);
 
 
 
