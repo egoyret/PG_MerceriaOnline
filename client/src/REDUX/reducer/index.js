@@ -1,5 +1,3 @@
-
-
 const initialState = {
     authUser: null
   };
