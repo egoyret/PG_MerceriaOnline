@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from './components/Home/Home';
-import {Route} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 // import ImageUpLoader from './components/ImageUpLoader/ImageUpLoader'
 import FileUpload from './components/FileUploader/FileUploader';
 import SignUpPage from './components/authentication/SignUp/index';

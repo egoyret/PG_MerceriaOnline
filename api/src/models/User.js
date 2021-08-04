@@ -35,12 +35,14 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    type: {
-      type: DataTypes.INTEGER,
+    isAdmin: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
       allowNull: false,
     },
-    status: {
-      type: DataTypes.INTEGER,
+    active: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
       allowNull: false,
     },
     address: {
