@@ -48,5 +48,6 @@ router.delete("/", (req, res) => {
             status: false
         })
     })
+    .then(() => res.status(200).json("Eliminado exitosamente"))
     .catch(error => res.status(400).send(error))
 })

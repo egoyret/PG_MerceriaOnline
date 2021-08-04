@@ -37,12 +37,12 @@ router.put("/", (req, res) => {
             id: req.body.review.id
         }
     })
-    .then(review => {
-        return review.update({
+    .then(review => review.update({
             date: Date.now(),
             score: req.body.review.score,
             description: req.body.review.description
         })
-    })
+    )
+    .then(() => res.status(200).json("Eliminado exitosamente"))
     .catch(error => res.status(400).send(error))
 })

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Bundle, bundle_product } = require('../db')
+const { Bundle, Bundle_Product } = require('../db')
 
 router.get("/", (_req, res) => {
     Bundle.findAll()
@@ -19,7 +19,7 @@ router.get("/:id", (req, res) => {
 
 router.post("/", (req, res) => {
     Bundle.create(req.body.bundle)
-    .then(bundle => bundle_product.create({bundle_id: bundle.id, product_id: req.body.product.id, quantity}))
+    .then(bundle => Bundle_Product.create({bundle_id: bundle.id, product_id: req.body.product.id, quantity}))
     .then(() => res.status(200).json("Creado exitosamente"))
     .catch(error => res.status(400).send(error))
 })
@@ -43,5 +43,6 @@ router.delete("/", (req, res) => {
     .then(bundle => bundle.update({
         active: false
     }))
+    .then(() => res.status(200).json("Eliminado exitosamente"))
     .catch(error => res.status(400).send(error))
 })
