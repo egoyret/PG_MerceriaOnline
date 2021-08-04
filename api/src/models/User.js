@@ -14,6 +14,14 @@ module.exports = (sequelize) => {
       allowNull: false,
       unique: true,
     },
+    first_name: {
+      type:DataTypes.STRING,
+      allowNull:false
+    },
+    last_name: {
+      type:DataTypes.STRING,
+      allowNull:false
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -27,12 +35,14 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    type: {
-      type: DataTypes.INTEGER,
+    isAdmin: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
       allowNull: false,
     },
-    status: {
-      type: DataTypes.INTEGER,
+    active: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
       allowNull: false,
     },
     address: {

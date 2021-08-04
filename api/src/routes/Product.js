@@ -1,4 +1,4 @@
-const {Product,category_product,image,stock} = require ('../db');
+const {Product,category_product,Image,Stock} = require('../db');
 const router = require('express').Router();
 const { Op } = require("sequelize");
 
@@ -11,7 +11,7 @@ router.post("/",function(req,res,_next){
                     title:req.body.title,
                     resume:req.body.resume,
                     detail:req.body.detail,
-                    price:req.body.price,})
+                    price:req.body.price})
 
 .then( (response) =>{
     

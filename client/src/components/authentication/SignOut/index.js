@@ -14,7 +14,7 @@ import Firebase from '../../FireBase';
 
  function SignOutButtonBase  (props) {
 
-    function clickHandler  (props) {
+    function clickHandler  () {
         console.log('hiciste click')
         try {
             props.firebase.doSignOut();
