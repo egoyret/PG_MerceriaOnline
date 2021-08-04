@@ -9,10 +9,5 @@ module.exports = (sequelize) => {
       allowNull: false,
       primaryKey: true,
     },
-    active: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true,
-      allowNull: false,
-    },
   });
 }

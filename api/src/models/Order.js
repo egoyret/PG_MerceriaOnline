@@ -15,11 +15,6 @@ module.exports = (sequelize) => {
     status: {
       type: DataTypes.ENUM('Entregado', 'En espera', 'En preparacion'),
     },
-    active: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true,
-      allowNull: false,
-    },
     total_price: {
       type: DataTypes.FLOAT,
       allowNull: false,

@@ -4,7 +4,6 @@ const { DataTypes } = require("sequelize")
 const fs = require('fs');
 const path = require('path');
 const {DB_USER, DB_PASSWORD, DB_HOST} = process.env;
-console.log(DB_USER)
 
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/merceria`, {
@@ -16,10 +15,10 @@ const basename = path.basename(__filename);
 const modelDefiners = [];
 
 // Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al arreglo modelDefiners
-fs.readdirSync(path.join(__dirname, './src/models'))
+fs.readdirSync(path.join(__dirname, './src/models/'))
   .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
   .forEach((file) => {
-    modelDefiners.push(require(path.join(__dirname, '/src/models', file)));
+    modelDefiners.push(require(path.join(__dirname, './src/models/', file)));
   });
 
 // Injectamos la conexion (sequelize) a todos los modelos
@@ -126,11 +125,7 @@ Review.belongsTo(Order);
 User.hasMany(Schedule);
 Schedule.belongsTo(User);
 
-
-
-
-
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
-
+}
