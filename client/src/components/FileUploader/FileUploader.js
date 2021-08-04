@@ -2,7 +2,7 @@ import React, { useState} from 'react';
 // import * as firebase from 'firebase/app';
 import firebase from "firebase";
 // import 'firebase/<PACKAGE>'; 
-import firebaseConfig from './FBconfig';
+import firebaseConfig from '../FireBase/FBconfig';
 
 
 
@@ -11,14 +11,14 @@ export default function FileUpload (props) {
 
     
 
-    if (!firebase.apps.length) {
-        const firebaseApp = firebase.initializeApp(firebaseConfig);
+    // if (!firebase.apps.length) {
+    //     const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-        const db = firebaseApp.firestore();
+    //     const db = firebaseApp.firestore();
         
-     }else {
-        firebase.app(); // if already initialized, use that one
-     }
+    //  }else {
+    //     firebase.app(); // if already initialized, use that one
+    //  }
      
 
     function handleUpload (e) {
