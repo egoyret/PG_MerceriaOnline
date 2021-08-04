@@ -14,51 +14,57 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
     switch (action.type) {
-        case 'LOG_IN_USER': {
+        case TYPES.LOG_IN_USER: {
             return {...state, 
                     authUser: action.payload}
         }
-        case GET_ALL_PRODUCT: return{
+        case TYPES.GET_ALL_PRODUCT: return{
             ...state,
             products:action.payload   
         }
-        case POST_PRODUCT: return state
-
-        case GET_ALL_USER: return{
+        case TYPES.GET_PRODUCT: return{
+            ...state,
+            product:action.payload   
+        }
+        case TYPES.CREATE_PRODUCT: return state
+        case TYPES.UPDATE_PRODUCT: return state
+        case TYPES.DELETE_PRODUCT: return state
+        
+        case TYPES.GET_ALL_USER: return{
             ...state,
             users:action.payload   
         }
-        case POST_USER: return state
+        case TYPES.CREATE_USER: return state
 
-        case GET_ALL_CATEGORY: return{
+        case TYPES.GET_ALL_CATEGORY: return{
             ...state,
             categories:action.payload
         }
-        case POST_CATEGORY: return state
+        case TYPES.CREATE_CATEGORY: return state
 
-        case GET_ALL_OFFICE: return{
+        case TYPES.GET_ALL_OFFICE: return{
             ...state,
             office:action.payload
         }
-        case POST_OFFICE: return state
+        case TYPES.CREATE_OFFICE: return state
 
-        case GET_ALL_ORDER: return{
+        case TYPES.GET_ALL_ORDER: return{
             ...state,
             orders:action.payload
         }
-        case POST_ORDER: return state
+        case TYPES.CREATE_ORDER: return state
 
-        case GET_ALL_REVIEW: return{
+        case TYPES.GET_ALL_REVIEW: return{
             ...state,
             reviews:action.payload
         }
-        case POST_REVIEW: return state
+        case TYPES.CREATE_REVIEW: return state
 
-        case GET_ALL_STOCK: return{
+        case TYPES.GET_ALL_STOCK: return{
             ...state,
             stock:action.payload
         }
-        case POST_STOCK: return state
+        case TYPES.STOCK: return state
         
 
 
