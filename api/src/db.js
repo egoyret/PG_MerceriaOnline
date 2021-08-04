@@ -6,7 +6,6 @@ const path = require('path');
 const {DB_USER, DB_PASSWORD, DB_HOST} = process.env;
 console.log(DB_USER)
 
-
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/merceria`, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
@@ -125,10 +124,6 @@ Review.belongsTo(Order);
 
 User.hasMany(Schedule);
 Schedule.belongsTo(User);
-
-
-
-
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
