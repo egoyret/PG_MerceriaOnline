@@ -1,6 +1,9 @@
 const { DataTypes } = require("sequelize")
+
 module.exports = (sequelize) => {
+
     sequelize.define("product", {
+
         id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
@@ -9,10 +12,6 @@ module.exports = (sequelize) => {
         catalog_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-        },
-        catalog_id:{
-            type: DataTypes.INTEGER,
-            allowNull:false,
             unique: true,
         },
         title: {
