@@ -1,0 +1,13 @@
+DB_USER=postgres
+DB_PASSWORD=7208016
+DB_HOST=localhost
+
+
+# Firebase config 
+
+    API_KEY: AIzaSyCfq5Q1MSuLuloy3L6FUz-iGNi0qI4Be2c
+    AUTH_DOMAIN: merceria-pg---henry.firebaseapp.com
+    PROJECT_ID: merceria-pg---henry"
+    STORAGE_BUCKET: merceria-pg---henry.appspot.com
+    MESSAGIN_SENDER_ID: 912190789885
+    APP_ID=1:912190789885:web:085346b880a5a6dc6d4694
