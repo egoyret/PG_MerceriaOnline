@@ -3,16 +3,19 @@ import Home from './components/Home/Home';
 import { Route } from 'react-router-dom';
 // import ImageUpLoader from './components/ImageUpLoader/ImageUpLoader'
 import FileUpload from './components/FileUploader/FileUploader';
-import ProductCreation from './components/ProductCreation/ProductCreation';
-import Login from './components/Login/Login'
+import SignUpPage from './components/authentication/SignUp/index';
+import SignInPage from './components/authentication/SignIn';
+import Navigation from './components/Navigation';
+import * as ROUTES from './constants/routes';
 
 function App() {
   return (
     <React.Fragment>
-      <Route exact path='/' component={Home} />
-      <Route path='/uploadPhoto' component={FileUpload} />
-      <Route path='/productcreation' component={ProductCreation} />
-      <Route path='/login' component={Login} />
+      <Route path='/' component={Navigation}/>
+      <Route path={ROUTES.HOME} component={Home}/>
+      <Route path='/uploadPhoto' component={FileUpload}/>
+      <Route path={ROUTES.SIGN_UP} component={SignUpPage}/>
+      <Route path={ROUTES.SIGN_IN} component={SignInPage}/>
     </React.Fragment>
   )
 }
