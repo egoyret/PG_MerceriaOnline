@@ -1,5 +1,3 @@
-import axios from 'axios';
-  
 // export function createProduct (userData) {
 //      return function(dispatch) {
 //          return axios.post(`http://localhost:3001/Product`, userData)
@@ -9,8 +7,12 @@ import axios from 'axios';
 //                 }                   
 // }
 
-export function LogInUser (userCredentials) {
-    return function (dispatch) {
-        return dispatch({type:"LOG_IN_USER", payload: userCredentials})
-    }
+import * as Login from "./login/index"
+import * as Product from "./product/index"
+import * as User from "./user/index"
+
+export default {
+    ...Login, 
+    ...Product,
+    ...User
 }
