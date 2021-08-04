@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Sequelize } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {DB_USER, DB_PASSWORD, DB_HOST} = process.env;
@@ -13,10 +13,10 @@ const basename = path.basename(__filename);
 const modelDefiners = [];
 
 // Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al arreglo modelDefiners
-fs.readdirSync(path.join(__dirname, '/src/models'))
+fs.readdirSync(path.join(__dirname, '/models'))
   .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
   .forEach((file) => {
-    modelDefiners.push(require(path.join(__dirname, '/src/models', file)));
+    modelDefiners.push(require(path.join(__dirname, '/models', file)));
   });
 
 // Injectamos la conexion (sequelize) a todos los modelos
@@ -30,9 +30,11 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 const { Bundle,Category,Image,Office,Order,Product,Review,Schedule,Stock,User,Wishlist } = sequelize.models;
 
-Bundle.belongsToMany(Product,{through: "bundle_product"});
-Product.belongsToMany(Bundle,{through: "bundle_product"});
-
+const bundle_product = sequelize.define("bundle_product", {
+  quantity: DataTypes.INTEGER
+})
+Bundle.belongsToMany(Product, {through: bundle_product});
+Product.belongsToMany(Bundle, {through: bundle_product});
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
