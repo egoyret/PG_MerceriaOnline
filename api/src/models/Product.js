@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
             type: DataTypes.TEXT
         },
         price: {
-            tyep: DataTypes.FLOAT
+            type: DataTypes.FLOAT
         },
     });
 }
