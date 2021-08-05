@@ -1,7 +1,4 @@
-
-const {Product, Productimage,Stock} = require ('../db');
-
-
+const {Product,category_product,Image,Stock} = require('../../db');
 const router = require('express').Router();
 const { Op } = require("sequelize");
 
