@@ -17,14 +17,15 @@ import Navbar from './components/Nav/Navbar';
 function App() {
   return (
     <React.Fragment>
-      <Route path='/' component={Navigation}/>
+      <Route path="/" component={Navbar} />
+      <Route exact path='/' component={Navigation}/>
       <Route path={ROUTES.HOME} component={Home}/>
       <Route path='/uploadPhoto' component={FileUpload}/>
       <Route path={ROUTES.SIGN_UP} component={SignUpPage}/>
       <Route path={ROUTES.SIGN_IN} component={SignInPage}/>
       <Route path={ROUTES.PRODUCTS} component={ProductList}/>
-      <Route path={ROUTES.PRODDETAIL} component={ProductDetail}/>
-      <Route path="/" component={Navbar} />
+      <Route path='/productdetail/:idProduct' component={ProductDetail}/>
+      
       <Route exact path='/' component={Home} />
       <Route path={ROUTES.SHOP} component={Shop}/>
       <Route path='/uploadPhoto' component={FileUpload} />

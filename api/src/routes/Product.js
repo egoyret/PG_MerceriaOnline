@@ -6,10 +6,50 @@ const { Op } = require("sequelize");
 
 
 //////////  GET PRODUCT  /////////////
-router.get("/",function(_req,res){
-    Product.findAll({include: [{ model: Category, attributes: ['id', 'name']}, {model: Productimage, attributes: ['id', 'image_url']}, {model: Stock, attributes: ['id', 'quantity', 'officeId']}]})
-    .then(product => res.status(200).json(product)).catch(error => res.status(400).send(error))
+router.get("/", async function(req,res, next){
+  const { name } = req.query ;
+  if(!name) {
+   try{
+     const product = await Product.findAll({include: [{ model: Category, attributes: ['id', 'name']}, {model: Productimage, attributes: ['id', 'image_url']}, {model: Stock, attributes: ['id', 'quantity', 'officeId']}]})
+      res.status(200).json(product)
+   }
+   catch (error) {next(error)};
+  } 
+  else {
+    try{
+      const product = await Product.findAll({where: {title: {[Op.substring]: name}}, include: [{ model: Category, attributes: ['id', 'name']}, {model: Productimage, attributes: ['id', 'image_url']}, {model: Stock, attributes: ['id', 'quantity', 'officeId']}]})
+       res.status(200).json(product)
+    }
+    catch (error) {next(error)}; 
+  }
 })
+
+router.get("/", async function(req,res, next){
+  try{
+
+    const product = await Product.findAll({include: [{ model: Category, attributes: ['id', 'name']}, {model: Productimage, attributes: ['id', 'image_url']}, {model: Stock, attributes: ['id', 'quantity', 'officeId']}]})
+     res.status(200).json(product)
+  }
+  catch (error) {next(error)};
+})
+
+
+
+
+router.get("/:idProducto", async function(req,res, next){
+  try{ 
+     
+    const product_id = req.params.idProducto;
+     console.log(product_id);
+    const product = Product.findByPk(product_id, {include: [{ model: Category, attributes: ['id', 'name']}, {model: Productimage, attributes: ['id', 'image_url']}, {model: Stock, attributes: ['id', 'quantity', 'officeId']}]})
+    if (product) {return  res.status(200).json(product)}
+    else {res.status(400) }
+  } 
+   catch (error) {next(error)};
+})
+
+
+
 
 ///////////    POST PRODUCT    ///////////
 

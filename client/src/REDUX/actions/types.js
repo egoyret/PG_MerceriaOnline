@@ -2,7 +2,7 @@
 export const LOG_IN_USER = "log_in_user"
 
 //Product
-export const GET_ALL_PRODUCT = "get_all_product"
+export const GET_ALL_PRODUCT = "getAllProduct"
 export const GET_PRODUCT = "get_product"
 export const CREATE_PRODUCT = "create_product" 
 export const UPDATE_PRODUCT = "update_product" 
