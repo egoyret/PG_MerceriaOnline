@@ -33,7 +33,7 @@ function SignInFormBase (props) {
       props.firebase
         .doSignInWithEmailAndPassword(email, password)
         .then((userCredentials) => {
-          console.log('userCredentials tiene: ' + Object.keys(userCredentials))
+          // console.log('userCredentials tiene: ' + Object.keys(userCredentials))
           dispatch(LogInUser(userCredentials.user.email))
           sessionStorage.setItem("pg_merceria", userCredentials.user.email)
           setState({ ...initial_state });
