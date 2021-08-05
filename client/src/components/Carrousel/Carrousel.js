@@ -1,35 +1,76 @@
-import React from 'react'
+import React, { useState } from 'react';
+import {
+    Carousel,
+    CarouselItem,
+    CarouselControl,
+    CarouselIndicators,
+    CarouselCaption
+} from 'reactstrap';
 
-const Carrousel = () => {
+const items = [
+    {
+        src: 'https://images.unsplash.com/photo-1549558549-415fe4c37b60?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNTA2ODZ8MHwxfHNlYXJjaHwxfHxwYWlzYWplc3xlbnwwfHx8fDE2MjgxMTEwMzA&ixlib=rb-1.2.1&q=80&w=1080',
+        altText: 'Slide 1',
+        caption: 'Slide 1'
+    },
+    {
+        src: 'https://images.unsplash.com/photo-1578922180039-6c13a4671d82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNTA2ODZ8MHwxfHNlYXJjaHwzfHxwYWlzYWplc3xlbnwwfHx8fDE2MjgxMTEwMzA&ixlib=rb-1.2.1&q=80&w=1080',
+        altText: 'Slide 2',
+        caption: 'Slide 2'
+    },
+    {
+        src: 'https://images.unsplash.com/photo-1569061831972-d1ed3635136e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNTA2ODZ8MHwxfHNlYXJjaHw0fHxwYWlzYWplc3xlbnwwfHx8fDE2MjgxMTEwMzA&ixlib=rb-1.2.1&q=80&w=1080',
+        altText: 'Slide 3',
+        caption: 'Slide 3'
+    }
+];
+
+const Example = (props) => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [animating, setAnimating] = useState(false);
+
+    const next = () => {
+        if (animating) return;
+        const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
+        setActiveIndex(nextIndex);
+    }
+
+    const previous = () => {
+        if (animating) return;
+        const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
+        setActiveIndex(nextIndex);
+    }
+
+    const goToIndex = (newIndex) => {
+        if (animating) return;
+        setActiveIndex(newIndex);
+    }
+
+    const slides = items.map((item) => {
+        return (
+            <CarouselItem
+                onExiting={() => setAnimating(true)}
+                onExited={() => setAnimating(false)}
+                key={item.src}
+            >
+                <img src={item.src} alt={item.altText} width="100%" height="350px" />
+                <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+            </CarouselItem>
+        );
+    });
+
     return (
-        <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel" width="200" height="200">
-            <ol className="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div className="carousel-inner">
-                <div className="carousel-item active">
-                    <img className="d-block w-100" src="https://ichef.bbci.co.uk/news/640/cpsprodpb/5BC3/production/_90319432_poke5.png"></img>
-                </div>
-                <div className="carousel-item">
-                    <img className="d-block w-100" src="https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/styles/480/public/media/image/2016/07/181536-asi-funciona-truco-elegir-pikachu-pokemon-go.jpg?itok=tAzg7eo9" alt="Second slide" />
-                </div>
-                <div className="carousel-item">
-                    <img className="d-block w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdPpNexP4i0hk9fHENTvKGzSseWkaLGd2K_YU4dGwALUadBrw442Vgu4YJMeN-pHaFpRc&usqp=CAU" alt="Third slide" />
-                </div>
-            </div>
-            <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span className="sr-only">Previous</span>
-            </a>
-            <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                <span className="sr-only">Next</span>
-            </a>
-
-        </div>
-    )
+        <Carousel
+            activeIndex={activeIndex}
+            next={next}
+            previous={previous}
+        >
+            <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
+            {slides}
+            <CarouselControl direction="prev" onClickHandler={previous} />
+            <CarouselControl direction="next" onClickHandler={next} />
+        </Carousel>
+    );
 }
 
-export default Carrousel
+export default Example;
