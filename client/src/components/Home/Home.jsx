@@ -1,12 +1,15 @@
 import React from 'react'
+import Carrousel from '../Carrousel/Carrousel'
+
 
 function Home() {
-    return (
-        <div>
-            <h1>PG Merceria</h1>
-            <hr/>
-        </div>
-    )
+  return (
+    <div className="container">
+      <h1 className="text-center">PG Merceria</h1>
+      <hr />
+      <Carrousel />
+    </div>
+  )
 }
 
 export default Home
