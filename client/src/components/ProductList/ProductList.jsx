@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { getAllProduct} from "../../REDUX/actions/product/index.js";
@@ -8,15 +8,20 @@ import { getAllProduct} from "../../REDUX/actions/product/index.js";
 import './Product.css'
 
 function ProductList() {
-const dispatch = useDispatch() 
-dispatch(getAllProduct());
+const dispatch = useDispatch()  
+
+useEffect( () => {
+  dispatch(getAllProduct());
+
+}, [])
+ 
 
 
 const list = useSelector(state => state.products)
 
 console.log(list);
 
-if (list.length > 0) {
+if (list && list.length > 0) {
  return (
     
   <>    
@@ -30,15 +35,16 @@ if (list.length > 0) {
        <ul style={{listStyleType: "none"}}>
         {list.map((r) => 
         <div>
-            <li key={r.id} className={"caja"}>
+            <li key={r.catalog_id} className={"caja"}>
               <div className={"caja-datos"}>
-                 <img src={r.productimages.image_url} width="350" alt='' className={"caja-imagen"}/>
+                 <img src={r.productimages[0].image_url} width="350" alt='Imagen no disponible' className={"caja-imagen"}/>
                  <div className={"caja-datosTexto"}>
                    <Link to={`/productdetail/${r.id}`} className={"caja-nombre"}>
                     {r.title} 
                    </Link>
                    <p>{`Artículo: ${r.catalog_id}`}</p>
                    <p>{`Precio: ${r.price}`}</p>
+                   <p>{`Categoria: ${r.categories[0].name}`}</p>
  
                  </div>
               </div>

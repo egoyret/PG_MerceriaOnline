@@ -11,15 +11,15 @@ export const createProduct = (product) => {
 
 export const getProduct = (id) => {
     return async  (dispatch) => {
-        const res = await axios.post('http://localhost:3001/product/' + id)
+        const res = await axios.get('http://localhost:3001/product/' + id)
         return dispatch({ type: TYPES.GET_PRODUCT, payload: res.data })
     }
 }
 
 
-export const getAllProduct = () => {
+export const getAllProduct = (search='') => {
     return async  (dispatch) => {
-        const res = await axios.post('http://localhost:3001/product')
+        const res = await axios.get(`http://localhost:3001/product?name=${search}`)
         return dispatch({ type: TYPES.GET_ALL_PRODUCT, payload: res.data })
     }
 }
@@ -27,7 +27,7 @@ export const getAllProduct = () => {
 
 export const updateProduct = (params) => {
     return async  (dispatch) => {
-        const res = await axios.post('http://localhost:3001/product/', params)
+        const res = await axios.put('http://localhost:3001/product/', params)
         return dispatch({ type: TYPES.UPDATE_PRODUCT, payload: res.data })
     }
 }
