@@ -1,4 +1,4 @@
-const {Category} = require ('../db');
+const {Category} = require ('../../db');
 const router = require('express').Router();
 const { Op } = require("sequelize");
 
