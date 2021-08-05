@@ -1,50 +1,48 @@
-const {Product,category_product,Image,Stock} = require('../db');
+const {Product,category_product,Image,Stock} = require('../../db');
 const router = require('express').Router();
 const { Op } = require("sequelize");
 
 router.get("/",function(_req,res){
     Product.findAll().then(product => res.status(200).json(product)).catch(error => res.status(400).send(error))
 })
-router.post("/",function(req,res,_next){
-   
-    Product.create({
+router.post("/", async function(req,res, next){
+ try{ 
+
+    const [product, created] =  await  Product.findOrCreate({
+                 where: {catalog_id: req.body.catalog_id},
+                 defaults: {
                     title:req.body.title,
+                    catalog_id:req.body.catalog_id,
                     resume:req.body.resume,
                     detail:req.body.detail,
-                    price:req.body.price})
+                    price:req.body.price}
+                 });
 
-.then( (response) =>{
-    
-if(req.body.image.length > 0){
-    req.body.image.map( c =>
-        image.create({
-            productId: response.UUID, 
-            url:c.url 
-        }) 
-    )   
-} 
+    if (!created) {  res.status(400).json("Ya existe producto con mismo nro catalogo") 
+    }
+    else {
+      await product.setCategories(req.body.category);
+      await Stock.create({
+          productId:product.id,
+          office_id:req.body.office_id,
+          quantity:0,
+          })   
+          
+          if(req.body.image.length > 0){
+                req.body.image.map( c =>
+                Productimage.create({
+                    productId: product.id, 
+                    image_url:c
+                }) 
+            ) 
+        } 
 
-               
-}) 
-.then( (response) =>{
+      res.status(200).json("creado exitosamente") 
+    }
 
-    category_product.create({
-        productId:response.UUID,
-        categoryId:req.body.category,
-    })            
-})  
-.then( (response) =>{
-
-    stock.create({
-        productId:response.UUID,
-        office_id:req.body.office_id,
-        quantity:0,
-    })            
-})                          
-.then( () =>{
-    res.status(200).json("creado exitosamente")
-})
-
+  
+ }
+catch (error) {next(error)};
 })
 
 
