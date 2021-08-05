@@ -52,15 +52,15 @@ Bundle.belongsToMany(Product,{ through: Bundle_Product });
 Product.belongsToMany(Bundle,{ through: Bundle_Product });
 
 
-const Category_Product = sequelize.define('Category_Product', {
+/* const Category_Product = sequelize.define('Category_Product', {
   id: {type: DataTypes.UUID,
   allowNull: false,
   primaryKey: true}
-});
+}); */
 
 
-Category.belongsToMany(Product,{ through: Category_Product});
-Product.belongsToMany(Category,{ through: Category_Product});
+Category.belongsToMany(Product,{ through: 'Category_Product'});
+Product.belongsToMany(Category,{ through: 'Category_Product'});
 
 
 

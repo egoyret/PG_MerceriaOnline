@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING
         },
         resume: {
-            type: DataTypes.STRING
+            type: DataTypes.TEXT
         },
         detail: {
             type: DataTypes.TEXT
