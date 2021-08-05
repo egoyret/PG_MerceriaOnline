@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import Firebase, {FirebaseContext} from './components/FireBase/index';
 import { Provider } from "react-redux";
-import ConfigureStore from "./REDUX/store/index";
+import ConfigureStore from "./redux/store/index";
 
 const store=ConfigureStore();
 
