@@ -12,6 +12,7 @@ const ProductCreation = () => {
         }
     )
 
+    const [images, setImages] = useState([])
     const handleSubmit = (e) => {
         e.preventDefault()
         
@@ -105,7 +106,7 @@ const ProductCreation = () => {
                 <div className="col-6">
                     <h1>Subir Imagen</h1>
                     <hr />
-                    <ReactFirebaseFileUpload />
+                    <ReactFirebaseFileUpload setImages={setImages} images={images}/>
                    
                 </div>
             </div>

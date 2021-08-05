@@ -66,8 +66,8 @@ import firebaseConfig from '../FireBase/FBconfig';
 
 // }
 
-const ReactFirebaseFileUpload = () => {
-    const [images, setImages] = useState([]);
+const ReactFirebaseFileUpload = ({ setImages, images }) => {
+    // const [images, setImages] = useState([]);
     const [urls, setUrls] = useState([]);
     const [progress, setProgress] = useState(0);
 
