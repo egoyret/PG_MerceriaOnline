@@ -11,15 +11,16 @@ import ConfigureStore from "./redux/store/index";
 const store=ConfigureStore();
 
 ReactDOM.render(
-  <Provider store={store}>
   <React.StrictMode>
-    <FirebaseContext.Provider value={new Firebase()}>
-    <BrowserRouter>
-    <App />
-    </BrowserRouter>
-    </FirebaseContext.Provider>
-  </React.StrictMode>
-  </Provider>,
+    <Provider store={store}>
+      <FirebaseContext.Provider value={new Firebase()}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </FirebaseContext.Provider>
+    </Provider>
+    
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
