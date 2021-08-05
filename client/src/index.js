@@ -5,8 +5,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import Firebase, {FirebaseContext} from './components/FireBase/index';
-import { Provider } from "react-redux"
-import store from './REDUX/store';
+import { Provider } from "react-redux";
+import ConfigureStore from "./REDUX/store/index";
+
+const store=ConfigureStore();
 
 ReactDOM.render(
   <React.StrictMode>
