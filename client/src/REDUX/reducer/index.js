@@ -26,7 +26,8 @@ function rootReducer(state = initialState, action) {
             return {...state, 
                     authUser: action.payload}
         }
-        case TYPES.GET_ALL_PRODUCT: return{
+        case TYPES.GET_ALL_PRODUCT: 
+            return{
             ...state,
             products:action.payload   
         }
