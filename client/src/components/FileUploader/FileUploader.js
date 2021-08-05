@@ -117,13 +117,16 @@ const ReactFirebaseFileUpload = ({ setImages, images }) => {
     console.log("images: ", images);
     console.log("urls", urls);
 
+
+
+
     return (
-        <div>
+        <div className="container">
             <progress value={progress} max="100" />
             <br />
             <br />
-            <input type="file" multiple onChange={handleChange} />
-            <button onClick={handleUpload}>Upload</button>
+            <input className="btn btn-" type="file" multiple onChange={handleChange} />
+            <button className="btn btn-info" onClick={handleUpload}>Upload</button>
             <br />
             {urls.map((url, i) => (
                 <div key={i}>
@@ -141,6 +144,8 @@ const ReactFirebaseFileUpload = ({ setImages, images }) => {
                     alt="firebase-image"
                 />
             ))}
+
+
         </div>
     );
 };

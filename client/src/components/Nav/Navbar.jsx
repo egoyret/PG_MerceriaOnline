@@ -28,6 +28,9 @@ const Navbar = () => {
                         <NavLink activeClassName="text-white" className="nav-link" to="/articles">
                             Articulos
                         </NavLink>
+                        <NavLink activeClassName="text-white" className="nav-link" to="/productcreation">
+                            Agregar productos
+                        </NavLink>
                         <SearchBar />
 
                     </div>
