@@ -2,10 +2,12 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { SignUpLink } from '../SignUp/index';
 import { withFirebase } from '../../FireBase';
 import * as ROUTES from '../../../constants/routes';
+import {LogInUser} from '../../../REDUX/actions/index'
 
 const SignInPage = () => (
   <div>
@@ -23,14 +25,19 @@ const initial_state = {
 
 function SignInFormBase (props) {
     var [state, setState] = useState(initial_state)
+    const dispatch = useDispatch();
   
    const onSubmit = event => {
       const { email, password } = state;
   
       props.firebase
         .doSignInWithEmailAndPassword(email, password)
-        .then(() => {
+        .then((userCredentials) => {
+          console.log('userCredentials tiene: ' + Object.keys(userCredentials))
+          dispatch(LogInUser(userCredentials.user.email))
+          sessionStorage.setItem("pg_merceria", userCredentials.user.email)
           setState({ ...initial_state });
+
           props.history.push(ROUTES.HOME);
         })
         .catch(error => {

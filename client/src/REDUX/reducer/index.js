@@ -1,7 +1,7 @@
 
 
 const initialState = {
-    authUser: null
+    authUser: 'guest'
   };
 
 function rootReducer(state = initialState, action) {

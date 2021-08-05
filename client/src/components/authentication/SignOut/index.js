@@ -1,9 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import {compose} from 'recompose';
+import { useDispatch } from 'react-redux';
 
 import { withFirebase } from '../../FireBase/context';
-import Firebase from '../../FireBase';
+import {LogInUser} from '../../../REDUX/actions/index';
 
  function LogOutButton () {
      return (
@@ -13,11 +14,15 @@ import Firebase from '../../FireBase';
 
 
  function SignOutButtonBase  (props) {
+   const dispatch=useDispatch();
 
     function clickHandler  () {
         console.log('hiciste click')
         try {
             props.firebase.doSignOut();
+            // sessionStorage.clear()
+            sessionStorage.setItem("pg_merceria", "guest")
+            dispatch(LogInUser('guest'))
             props.history.push('/')
         } catch (error) {
             console.log(error.message); 
@@ -27,7 +32,7 @@ import Firebase from '../../FireBase';
 
     return (
   <button type="button" onClick={clickHandler}>
-    Sign Out
+    Log Out
   </button>
 );}
 
