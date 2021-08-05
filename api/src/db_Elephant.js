@@ -4,12 +4,21 @@ const { DataTypes } = require("sequelize")
 const fs = require('fs');
 const path = require('path');
 const {DB_USER, DB_PASSWORD, DB_HOST} = process.env;
+console.log(DB_USER)
 
-
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/merceria`, {
+// Prueba con ElephantSQL
+var conString = "postgres://lfcaslhu:cWEdG3nDXnD2aE8pV4dOMmKYXkdL-6cg@kesavan.db.elephantsql.com/lfcaslhu" //ElephantSQL conn string
+const sequelize = new Sequelize(conString, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
+
+//Codigo para Postgress local
+/* const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/merceria`, {
+  logging: false, // set to console.log to see the raw SQL queries
+  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+}); */
+
 const basename = path.basename(__filename);
 
 const modelDefiners = [];

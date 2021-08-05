@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
         image_url: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
+            unique: false,
         },
     });
 }

@@ -12,15 +12,20 @@ import ConfigureStore from "./REDUX/store/index";
 const store = ConfigureStore();
 
 ReactDOM.render(
-  <Provider store={store}>
-    <React.StrictMode>
+
+  <React.StrictMode>
+    <Provider store={store}>
+   develop
       <FirebaseContext.Provider value={new Firebase()}>
         <BrowserRouter>
           <App />
         </BrowserRouter>
       </FirebaseContext.Provider>
-    </React.StrictMode>
-  </Provider>,
+
+    </Provider>
+    
+  </React.StrictMode>,
+    
   document.getElementById('root')
 );
 

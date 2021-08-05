@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { SignUpLink } from '../SignUp/index';
+import { PasswordForgetLink } from '../PasswordForget/index';
 import { withFirebase } from '../../FireBase';
 import * as ROUTES from '../../../constants/routes';
 import {LogInUser} from '../../../REDUX/actions/login/index'
@@ -13,6 +14,7 @@ const SignInPage = () => (
   <div>
     <h1>SignIn</h1>
     <SignInForm />
+    <PasswordForgetLink />
     <SignUpLink />
   </div>
 );

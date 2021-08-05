@@ -1,5 +1,5 @@
 const { Router} = require('express');
-const {Office,Schedule}=require('../../db')
+const {Office,Schedule}=require('../db')
 const { Op } = require('sequelize');
 const router = Router();
 
