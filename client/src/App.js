@@ -4,10 +4,9 @@ import { Route } from 'react-router-dom';
 import Home from './components/views/Home/Home';
 import Product from './components/views/Product/Product';
 import FileUpload from './components/FileUploader/FileUploader';
-import SignUpPage from './components/authentication/SignUp/index';
-import SignInPage from './components/authentication/SignIn';
-import Navigation from './components/Navigation';
-import * as ROUTES from './constants/routes';
+import ProductCreation from './components/ProductCreation/ProductCreation';
+import Login from './components/Login/Login'
+import Navbar from './components/Nav/Navbar';
 
 function App() {
   return (
