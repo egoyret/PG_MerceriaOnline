@@ -4,23 +4,24 @@ import thunk from "redux-thunk";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 
-// const ConfigureStore = () => {
-//     var intialState = {};
-//     try {
-//     intialState = sessionStorage.getItem("master_class") ? JSON.parse(sessionStorage.getItem("master_class")) : {};
-//     } catch (error) {
-//     console.log('getError', error)
-//     }
-//     const saver = (store) => next => action => {
-//     let stateToSave = store.getState();
-//     sessionStorage.setItem("master_class", JSON.stringify({ ...stateToSave }))
-//     return next(action);
-//     }
+const ConfigureStore = () => {
+    var initialState = {};
+    try {
+        initialState = sessionStorage.getItem("pg_merceria") ? JSON.parse(sessionStorage.getItem("pg_merceria")) : initialState;
+    } catch (error) {
+    console.log('getError', error)
+    }
+    const saver = (store) => next => action => {
+    let stateToSave = store.getState();
+    let authUser= stateToSave.authUser;
+    sessionStorage.setItem("pg_merceria", JSON.stringify({ ...stateToSave }))
+    return next(action);
+    }
 
-const store = createStore(
-    rootReducer,
+return createStore(
+    rootReducer, initialState,
     composeEnhancers(applyMiddleware(thunk))
-);
-
+    );
+}
     
-export default store
+export default ConfigureStore;

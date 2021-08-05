@@ -1,7 +1,7 @@
-import * as TYPES from ("../actions/types.js")
+import * as TYPES from "../actions/types.js";
 
 const initialState = {
-    authUser: null,
+    authUser: 'guest',
     products: [],
     product:[],
     users: [],

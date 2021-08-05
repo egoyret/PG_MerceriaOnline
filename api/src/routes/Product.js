@@ -1,15 +1,18 @@
-const {Product,category_product,Stock} = require('../db');
+
+const {Product, Category, Productimage,Stock} = require ('../db');
+
 const router = require('express').Router();
 const { Op } = require("sequelize");
 
 
 //////////  GET PRODUCT  /////////////
 router.get("/",function(_req,res){
-    Product.findAll().then(product => res.status(200).json(product)).catch(error => res.status(400).send(error))
+    Product.findAll({include: [{ model: Category, attributes: ['id', 'name']}, {model: Productimage, attributes: ['id', 'image_url']}, {model: Stock, attributes: ['id', 'quantity', 'officeId']}]})
+    .then(product => res.status(200).json(product)).catch(error => res.status(400).send(error))
 })
 
-
 ///////////    POST PRODUCT    ///////////
+
 router.post("/", async function(req,res, next){
  try{ 
 
@@ -42,7 +45,7 @@ router.post("/", async function(req,res, next){
             ) 
         } 
 
-      res.status(200).json("creado exitosamente") 
+      res.status(200).json(product) 
     }
 
   
