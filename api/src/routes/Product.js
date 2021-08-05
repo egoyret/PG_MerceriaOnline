@@ -1,13 +1,14 @@
 
-const {Product, Productimage,Stock} = require ('../db');
+const {Product, Category, Productimage,Stock} = require ('../db');
 
 
 const router = require('express').Router();
 const { Op } = require("sequelize");
 
 router.get("/",function(_req,res){
-    Product.findAll().then(product => res.status(200).json(product)).catch(error => res.status(400).send(error))
+    Product.findAll({include: Category}).then(product => res.status(200).json(product)).catch(error => res.status(400).send(error))
 })
+
 router.post("/", async function(req,res, next){
  try{ 
 
