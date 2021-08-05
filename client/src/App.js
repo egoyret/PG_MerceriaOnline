@@ -1,6 +1,5 @@
 import React from 'react';
 import Home from './components/Home/Home';
-import Shop from './components/Shop/Shop';
 import { Route } from 'react-router-dom';
 
 
@@ -15,6 +14,7 @@ import * as ROUTES from './constants/routes';
 import ProductCreation from './components/ProductCreation/ProductCreation';
 import Login from './components/Login/Login'
 import Navbar from './components/Nav/Navbar';
+import Form from './components/Admin/FormDetail/Form';
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
       <Route path={ROUTES.PRODDETAIL} component={ProductDetail}/>
       <Route path="/" component={Navbar} />
       <Route exact path='/' component={Home} />
-      <Route path={ROUTES.SHOP} component={Shop}/>
+      <Route path={ROUTES.FORM} component={Form}/>
       <Route path='/productcreation' component={ProductCreation} />
       <Route path='/login' component={Login} />
     </React.Fragment>
