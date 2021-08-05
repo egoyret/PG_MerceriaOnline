@@ -4,7 +4,7 @@ const { DataTypes } = require("sequelize")
 const fs = require('fs');
 const path = require('path');
 const {DB_USER, DB_PASSWORD, DB_HOST} = process.env;
-console.log(DB_USER)
+
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/merceria`, {
   logging: false, // set to console.log to see the raw SQL queries

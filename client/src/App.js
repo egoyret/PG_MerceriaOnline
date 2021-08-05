@@ -1,5 +1,6 @@
 import React from 'react';
 import Home from './components/Home/Home';
+import Shop from './components/Shop/Shop';
 import { Route } from 'react-router-dom';
 // import ImageUpLoader from './components/ImageUpLoader/ImageUpLoader'
 import FileUpload from './components/FileUploader/FileUploader';
@@ -13,6 +14,7 @@ function App() {
     <React.Fragment>
       <Route path='/' component={Navigation}/>
       <Route path={ROUTES.HOME} component={Home}/>
+      <Route path={ROUTES.SHOP} component={Shop}/>
       <Route path='/uploadPhoto' component={FileUpload}/>
       <Route path={ROUTES.SIGN_UP} component={SignUpPage}/>
       <Route path={ROUTES.SIGN_IN} component={SignInPage}/>
