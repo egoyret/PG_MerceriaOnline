@@ -9,16 +9,16 @@ module.exports = (sequelize) => {
             defaultValue: DataTypes.UUIDV4,
             primaryKey: true,
         },
-        catalog_id: {
+         catalog_id:{
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull:false,
             unique: true,
         },
         title: {
             type: DataTypes.STRING
         },
         resume: {
-            type: DataTypes.STRING
+            type: DataTypes.TEXT
         },
         detail: {
             type: DataTypes.TEXT
