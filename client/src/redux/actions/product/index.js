@@ -20,7 +20,7 @@ export const getProduct = (id) => {
 export const getAllProduct = () => {
     return async (dispatch) => {
         const json = await axios.post('http://localhost:3001/product')
-        return dispatch({ type: TYPES.GET_ALL_PRODUCT, payload: json.data })
+        return dispatch({ type: TYPES.GET_ALL_PRODUCT, payload: json.data }) 
     }
 }
 
