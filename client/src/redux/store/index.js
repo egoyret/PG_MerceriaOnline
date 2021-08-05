@@ -20,7 +20,7 @@ const ConfigureStore = () => {
 
 return createStore(
     rootReducer, initialState,
-    composeEnhancers(applyMiddleware(thunk))
+    applyMiddleware(thunk)
     );
 }
     

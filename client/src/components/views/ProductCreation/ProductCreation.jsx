@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ReactFirebaseFileUpload from '../FileUploader/FileUploader'
+import ReactFirebaseFileUpload from '../../FileUploader/FileUploader'
 
 const ProductCreation = () => {
 
