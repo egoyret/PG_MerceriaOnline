@@ -45,7 +45,7 @@ function rootReducer(state = initialState, action) {
         }
         case TYPES.GET_USER: return{
             ...state,
-            user:action.payload   
+            user:action.payload
         }
         case TYPES.CREATE_USER: return state
         case TYPES.UPDATE_USER: return state
