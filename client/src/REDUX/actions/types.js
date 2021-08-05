@@ -34,6 +34,7 @@ export const GET_ALL_STOCK = "get_all_stock"
 export const GET_STOCK = "get_stock"
 export const CREATE_STOCK = "create_stock" 
 export const DELETE_STOCK = "get_stock"  
+export const UPDATE_STOCK = "update_stock" 
 
 //Bundle
 export const GET_ALL_BUNDLE = "get_all_bundle"
