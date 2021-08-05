@@ -1,7 +1,7 @@
 import * as TYPES from ("../actions/types.js")
 
 const initialState = {
-    authUser: 'guest',
+    authUser: null,
     products: [],
     product:[],
     users: [],
