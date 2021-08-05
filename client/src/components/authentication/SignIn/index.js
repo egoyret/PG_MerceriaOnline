@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { SignUpLink } from '../SignUp/index';
 import { withFirebase } from '../../FireBase';
 import * as ROUTES from '../../../constants/routes';
-import {LogInUser} from '../../../REDUX/actions/index'
+import {LogInUser} from '../../../REDUX/actions/login/index'
 
 const SignInPage = () => (
   <div>

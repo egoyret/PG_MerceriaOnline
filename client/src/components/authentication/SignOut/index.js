@@ -4,7 +4,7 @@ import {compose} from 'recompose';
 import { useDispatch } from 'react-redux';
 
 import { withFirebase } from '../../FireBase/context';
-import {LogInUser} from '../../../REDUX/actions/index';
+import {LogInUser} from '../../../REDUX/actions/login/index';
 
  function LogOutButton () {
      return (
