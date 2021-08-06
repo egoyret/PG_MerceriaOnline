@@ -7,7 +7,12 @@ import * as ROUTES from '../../constants/routes';
 
 function Navigation  ()  {
 
-  var authUser = useSelector((state)=>state.authUser);
+  // var authUser = useSelector((state)=>state.authUser); ya no funciona dado que cambiaron el 
+  //estado de store
+
+  //observo sessionStorage para determinar authUser
+
+  var authUser=sessionStorage.getItem('pg_merceria')
   
   return (
   <div>

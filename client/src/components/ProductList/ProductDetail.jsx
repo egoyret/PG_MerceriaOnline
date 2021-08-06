@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getProduct} from "../../REDUX/actions/product/index.js";
+import { getProduct} from "../../redux/actions/product/index.js";
 
 
 

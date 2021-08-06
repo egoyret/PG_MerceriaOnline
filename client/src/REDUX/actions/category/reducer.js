@@ -1,3 +1,5 @@
+import * as TYPES from '../types';
+
 const initialState = {
     categories: [],
     category:[],

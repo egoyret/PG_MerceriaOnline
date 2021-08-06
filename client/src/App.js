@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from './components/Home/Home';
+import Home from './components/views/Home/Home';
 import { Route } from 'react-router-dom';
 
 
@@ -11,7 +11,7 @@ import Navigation from './components/Navigation';
 import ProductList from './components/ProductList/ProductList';
 import ProductDetail from './components/ProductList/ProductDetail';
 import * as ROUTES from './constants/routes';
-import ProductCreation from './components/ProductCreation/ProductCreation';
+import ProductCreation from './components/views/ProductCreation/ProductCreation';
 import Login from './components/Login/Login'
 import Navbar from './components/Nav/Navbar';
 import Form from './components/Admin/FormDetail/Form';
@@ -20,7 +20,7 @@ function App() {
   return (
     <React.Fragment>
       <Route path="/" component={Navbar} />
-      <Route exact path='/' component={Navigation}/>
+      <Route path='/' component={Navigation}/>
       <Route path={ROUTES.HOME} component={Home}/>
       <Route path={ROUTES.SIGN_UP} component={SignUpPage}/>
       <Route path={ROUTES.SIGN_IN} component={SignInPage}/>

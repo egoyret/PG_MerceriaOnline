@@ -8,7 +8,7 @@ import { SignUpLink } from '../SignUp/index';
 import { PasswordForgetLink } from '../PasswordForget/index';
 import { withFirebase } from '../../FireBase';
 import * as ROUTES from '../../../constants/routes';
-import {LogInUser} from '../../../redux/actions/login/index'
+import {LogInUser} from '../../../redux/actions/login/index';
 
 const SignInPage = () => (
   <div>
