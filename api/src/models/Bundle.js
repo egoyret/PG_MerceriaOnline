@@ -12,7 +12,11 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+<<<<<<< HEAD
         discout: {
+=======
+        discount: {
+>>>>>>> 1a30ff234dd378ff6381d8841f13cea537c8b835
             type: DataTypes.FLOAT,
             allowNull: false
         }
