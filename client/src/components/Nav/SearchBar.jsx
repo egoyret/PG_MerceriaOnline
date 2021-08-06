@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from "react-redux";
-import { getAllProduct} from "../../REDUX/actions/product/index.js";
+import { getAllProduct} from "../../redux/actions/product/index.js";
 
 
 const SearchBar = ({keyword,setKeyword}) => {

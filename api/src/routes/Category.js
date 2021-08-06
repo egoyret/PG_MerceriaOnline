@@ -10,7 +10,7 @@ router.post("/",function(req,res,_next){
     console.log(req.query.name)
     Category.create({
                     name:req.query.name,
-                    })      
+                    })
 .then( () =>{
     res.status(200).json("creado exitosamente")
 })

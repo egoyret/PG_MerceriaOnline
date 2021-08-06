@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react'
 import { useDispatch,useSelector } from 'react-redux';
-import {getAllCategory,deleteCategory,postCategory} from "../../../REDUX/actions/category/index"
+import {getAllCategory,deleteCategory,postCategory} from "../../../redux/actions/category/index"
 
 
 //CREAR RUTA DELETE PARA CATEGORIES

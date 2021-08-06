@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.min.css'
+//import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -14,14 +14,16 @@ const store = ConfigureStore();
 ReactDOM.render(
 
   <React.StrictMode>
+    
     <Provider store={store}>
    develop
+   <BrowserRouter>
       <FirebaseContext.Provider value={new Firebase()}>
-        <BrowserRouter>
+        
           <App />
-        </BrowserRouter>
+        
       </FirebaseContext.Provider>
-
+      </BrowserRouter>
     </Provider>
     
   </React.StrictMode>,
