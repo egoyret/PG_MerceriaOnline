@@ -1,17 +1,20 @@
+//dependencies
 import React from 'react';
-import Home from './components/Home/Home';
 import { Route } from 'react-router-dom';
+import * as ROUTES from './routes';
 
+//views
+import Home from './views/Home/Home';
+import Product from './views/Product/Product';
+import ProductCreation from './views/ProductCreation/ProductCreation';
 
-import SignUpPage from './components/authentication/SignUp/index';
-import SignInPage from './components/authentication/SignIn';
-import Account from './components/authentication/Account';
-import PasswordForgetPage from './components/authentication/PasswordForget';
+//components
+import SignUpPage from './components/Authentication/SignUp/index';
+import SignInPage from './components/Authentication/SignIn';
+import Account from './components/Authentication/Account';
+import PasswordForgetPage from './components/Authentication/PasswordForget';
 import Navigation from './components/Navigation';
 import ProductList from './components/ProductList/ProductList';
-import ProductDetail from './components/ProductList/ProductDetail';
-import * as ROUTES from './constants/routes';
-import ProductCreation from './components/ProductCreation/ProductCreation';
 import Login from './components/Login/Login'
 import Navbar from './components/Nav/Navbar';
 import Form from './components/Admin/FormDetail/Form';
@@ -27,8 +30,7 @@ function App() {
       <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage}/>
       <Route path={ROUTES.ACCOUNT} component={Account}/>
       <Route path={ROUTES.PRODUCTS} component={ProductList}/>
-      <Route path='/productdetail/:idProduct' component={ProductDetail}/>
-      
+      <Route path={ROUTES.PRODUCT} component={Product}/>
       <Route exact path='/' component={Home} />
       <Route path={ROUTES.FORM} component={Form}/>
       <Route path='/productcreation' component={ProductCreation} />

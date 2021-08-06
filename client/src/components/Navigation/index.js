@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import SignOutButton from '../authentication/SignOut/index';
-import * as ROUTES from '../../constants/routes';
+import SignOutButton from '../Authentication/SignOut/index';
+import * as ROUTES from '../../routes';
 
 function Navigation  ()  {
 
-  var authUser = useSelector((state)=>state.authUser);
+  var authUser = sessionStorage.getItem("pg_merceria")
   
   return (
   <div>
