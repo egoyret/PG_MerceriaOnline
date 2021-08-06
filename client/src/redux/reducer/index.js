@@ -8,6 +8,7 @@ import productReducer from '../actions/product/reducer';
 import reviewReducer from '../actions/review/reducer';
 import stockReducer from '../actions/stock/reducer';
 import userReducer from '../actions/user/reducer';
+
 const rootReducer = combineReducers(
     {
         bundleReducer,
