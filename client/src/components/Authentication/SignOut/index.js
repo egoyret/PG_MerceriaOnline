@@ -14,7 +14,7 @@ import {LogInUser} from '../../../redux/actions/login/index';
 
 
  function SignOutButtonBase  (props) {
-   const dispatch=useDispatch();
+    //const dispatch = useDispatch();
 
     function clickHandler  () {
         console.log('hiciste click')
@@ -22,7 +22,7 @@ import {LogInUser} from '../../../redux/actions/login/index';
             props.firebase.doSignOut();
             // sessionStorage.clear()
             sessionStorage.setItem("pg_merceria", "guest")
-            dispatch(LogInUser('guest'))
+            //dispatch(LogInUser('guest'))
             props.history.push('/')
         } catch (error) {
             console.log(error.message); 
