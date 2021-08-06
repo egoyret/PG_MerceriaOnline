@@ -7,7 +7,7 @@ import * as ROUTES from '../../routes';
 
 function Navigation  ()  {
 
-  var authUser = useSelector((state)=>state.authUser);
+  var authUser = sessionStorage.getItem("pg_merceria")
   
   return (
   <div>
