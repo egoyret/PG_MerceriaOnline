@@ -30,16 +30,16 @@ const items = [
 const Carrousel = (props) => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [animating, setAnimating] = useState(false);
-    console.log(props)
+
     const next = () => {
         if (animating) return;
-        const nextIndex = activeIndex === props.images.length - 1 ? 0 : activeIndex + 1;
+        const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
         setActiveIndex(nextIndex);
     }
 
     const previous = () => {
         if (animating) return;
-        const nextIndex = activeIndex === 0 ? props.images.length - 1 : activeIndex - 1;
+        const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
         setActiveIndex(nextIndex);
     }
 
@@ -48,8 +48,7 @@ const Carrousel = (props) => {
         setActiveIndex(newIndex);
     }
 
-    const slides = props.images.map((item) => {
-        console.log(item)
+    const slides = items.map((item) => {
         return (
             
             <CarouselItem class="container"
@@ -64,15 +63,14 @@ const Carrousel = (props) => {
             
         );
     });
-    
-    
+
     return (
         <Carousel
             activeIndex={activeIndex}
             next={next}
             previous={previous}
         >
-            <CarouselIndicators items={props.images} activeIndex={props.images} onClickHandler={goToIndex} />
+            <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
             {slides}
             <CarouselControl direction="prev" onClickHandler={previous} />
             <CarouselControl direction="next" onClickHandler={next} />
